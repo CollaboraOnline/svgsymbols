@@ -29,20 +29,6 @@
 		.w2ui-icon.search{ background: url('icons/sc_recsearch.svg') no-repeat center !important; }
 		.w2ui-icon.bold {background: url('icons/lc_bold_branding.svg') no-repeat center !important;}
 		*/
-		.w2ui-icon.italic { background: url('icons/lc_italic_branding.svg') no-repeat center !important;}
-		.w2ui-icon.underline {background: url('icons/lc_underline_branding.svg') no-repeat center !important;}
-		.w2ui-icon.strikeout {background: url('icons/lc_strikeout_branding.svg') no-repeat center !important;}
-		.w2ui-icon.textcolor {background: url('icons/lc_color_branding.svg') no-repeat center !important;}
-		.w2ui-icon.backcolor {background: url('icons/lc_backcolor_branding.svg') no-repeat center !important;}
-		.w2ui-icon.alignleft {background: url('icons/lc_alignleft_branding.svg') no-repeat center !important;}
-		.w2ui-icon.alignhorizontal {background: url('icons/lc_alignhorizontalcenter_branding.svg') no-repeat center !important;}
-		.w2ui-icon.alignright {background: url('icons/lc_alignright_branding.svg') no-repeat center !important;}
-		.w2ui-icon.alignblock {background: url('icons/lc_alignblock_branding.svg') no-repeat center !important;}
-		.w2ui-icon.linespacing {background: url('icons/lc_spacepara15_branding.svg') no-repeat center !important;}
-		.w2ui-icon.numbering {background: url('icons/lc_defaultnumbering_branding.svg') no-repeat center !important;}
-		.w2ui-icon.bullet {background: url('icons/lc_defaultbullet_branding.svg') no-repeat center !important;}
-		.w2ui-icon.incrementindent {background: url('icons/lc_decrementlevel_branding.svg') no-repeat center !important;}
-		.w2ui-icon.decrementindent {background: url('icons/lc_decrementindent_branding.svg') no-repeat center !important;}
 
 		.w2ui-toolbar table.w2ui-button {
 			margin: 0 1px 0 0;
@@ -125,17 +111,28 @@
 		</style>
 	</head>
 	<body>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script>
+			$.get("images/icon-theme.svg", function(data) {
+				var div = document.createElement("div");
+				div.innerHTML = new XMLSerializer().
+				serializeToString(data.documentElement);
+				document.body.insertBefore(div, document.body.
+				childNodes[0]);
+			});
+		</script>
+		<!--
 		<svg width="0" height="0" class="hide">
-		 <defs>
-		  <g id="lc_recsearch">
+			<symbol id="lc_recsearch" viewBox="0 0 24 24">
+				<title>Icon in a shape of a magnifying glass that triggers "Search in a document"</title>
 				<path d="m14.5 2a7.5 7.5 0 0 0 -7.5 7.5 7.5 7.5 0 0 0 1.5410156 4.544922l-6.2480468 6.248047c-.981667.942509.4715544 2.395729 1.4140624 1.414062l6.25-6.25a7.5 7.5 0 0 0 4.5429688 1.542969 7.5 7.5 0 0 0 7.5-7.5 7.5 7.5 0 0 0 -7.5-7.5z" fill="#4d4d4d"/><circle cx="14.5" cy="9.5" fill="#fff" r="5.5"/>
-		  </g>
-		  <g id="lc_bold_branding">
+			</symbol>
+			<symbol id="lc_bold_branding" viewBox="0 0 24 24">
+				<title>bold formatting</title>
 				<path d="m4 2v20h4 6a6 6 0 0 0 6-6 6 6 0 0 0 -3.082031-5.234375c.676938-.9140426 1.082031-2.0408676 1.082031-3.265625 0-3.0375661-2.462434-5.5-5.5-5.5h-4.5zm4 3h4.5c1.380712 0 2.5 1.1192881 2.5 2.5s-1.119288 2.5-2.5 2.5h-4.5zm0 8h4.5 1.5a3 3 0 0 1 3 3 3 3 0 0 1 -3 3h-6z" fill="#696969"/>
-		  </g>
-		 </defs>
+			</symbol>
 		</svg>
-
+		-->
 		<div id="toolbar-down" style="display: block;" name="editbar" class="w2ui-reset w2ui-toolbar">
 			<div class="w2ui-scroll-wrapper">
 				<table width="100%" cellspacing="0" cellpadding="0">
@@ -152,9 +149,8 @@
 															<tr>
 																<td><div class="w2ui-tb-image w2ui-icon search">
 																	<!-- Draw one of the groups from our big svg containing all icons -->
-																	<svg class="icon lc_recsearch" viewBox="0 0 24 24">
-																	<title>Icon in a shape of a pencil that triggers "Edit document"</title>
-																	<use xlink:href="#lc_recsearch" />
+																	<svg class="icon lc_recsearch">
+																		<use xlink:href="#lc_recsearch" />
 																	</svg>
 																	<!-- END of Draw one of the groups from our big svg containing all icons -->
 																</div></td>
