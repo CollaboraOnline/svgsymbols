@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+		#toolbar-down {
+			padding: 0px;
+			width: 375px;
+			height: 34px !important;
+			color: #4c566a;
+			border-top: 1px solid #f1f1f1 !important;
+			left: 0;
+			right: 0;
+			text-align: center;
+			bottom: 0;
+			z-index: 1000;
+			margin: 0px;
+			outline: 0px;
+			background-color:#ffffff;
+			overflow: hidden;
+			box-shadow: 0 0px 6px 0px #00000021;
+		}
+		.w2ui-tb-image {
+			width: 24px !important;
+			height: 24px !important;
+		}
+		/*
+		.w2ui-icon.search{ background: url('icons/sc_recsearch.svg') no-repeat center !important; }
+		.w2ui-icon.bold {background: url('icons/lc_bold_branding.svg') no-repeat center !important;}
+		*/
+		.w2ui-icon.italic { background: url('icons/lc_italic_branding.svg') no-repeat center !important;}
+		.w2ui-icon.underline {background: url('icons/lc_underline_branding.svg') no-repeat center !important;}
+		.w2ui-icon.strikeout {background: url('icons/lc_strikeout_branding.svg') no-repeat center !important;}
+		.w2ui-icon.textcolor {background: url('icons/lc_color_branding.svg') no-repeat center !important;}
+		.w2ui-icon.backcolor {background: url('icons/lc_backcolor_branding.svg') no-repeat center !important;}
+		.w2ui-icon.alignleft {background: url('icons/lc_alignleft_branding.svg') no-repeat center !important;}
+		.w2ui-icon.alignhorizontal {background: url('icons/lc_alignhorizontalcenter_branding.svg') no-repeat center !important;}
+		.w2ui-icon.alignright {background: url('icons/lc_alignright_branding.svg') no-repeat center !important;}
+		.w2ui-icon.alignblock {background: url('icons/lc_alignblock_branding.svg') no-repeat center !important;}
+		.w2ui-icon.linespacing {background: url('icons/lc_spacepara15_branding.svg') no-repeat center !important;}
+		.w2ui-icon.numbering {background: url('icons/lc_defaultnumbering_branding.svg') no-repeat center !important;}
+		.w2ui-icon.bullet {background: url('icons/lc_defaultbullet_branding.svg') no-repeat center !important;}
+		.w2ui-icon.incrementindent {background: url('icons/lc_decrementlevel_branding.svg') no-repeat center !important;}
+		.w2ui-icon.decrementindent {background: url('icons/lc_decrementindent_branding.svg') no-repeat center !important;}
+
+		.w2ui-toolbar table.w2ui-button {
+			margin: 0 1px 0 0;
+			border-radius: 4px;
+			height: 24px;
+			min-width: 24px;
+			border: 2px solid transparent;
+			background-color:transparent;
+		}
+		.w2ui-toolbar table {
+			table-layout: auto !important;
+		}
+		.w2ui-toolbar .w2ui-break {
+			height: 18px;
+			background-image: none;
+			background-color: #ccc;
+			width: 1px !important;
+			padding: 0px;
+			margin: 0 4px !important;
+			line-height: 35px !important;
+		}
+		.w2ui-reset table {
+			max-width: none;
+			background-color: transparent;
+			border-collapse: separate;
+			border-spacing: 0;
+			border: none;
+		}
+		.w2ui-reset * {
+			color: default;
+			line-height: 100%;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			-ms-box-sizing: border-box;
+			-o-box-sizing: border-box;
+			box-sizing: border-box;
+			margin: 0px;
+			padding: 0px;
+		}
+		#toolbar-down table.w2ui-button .w2ui-tb-image {
+			margin: 5px 9px 3px 9px !important;
+		}
+		#toolbar-down .w2ui-scroll-left, #toolbar-down .w2ui-scroll-right {
+			background: none;
+			height: 100%;
+			width: 0px;
+			top: 0%;
+			box-shadow: 8px 0 13px 2px #0b87e7, -6px 0px 6px 6px #007cdc;
+			border-radius: 0px;
+			text-align: center
+		}
+		#toolbar-down > .w2ui-scroll-wrapper {
+			overflow: hidden;
+			scrollbar-width: none;
+			-ms-scrollbar: none;
+		}
+		#toolbar-down * {
+			max-height: 35px !important;
+		}
+		#toolbar-down .w2ui-scroll-right {
+			right: 0;
+			-webkit-transform: rotate(180deg);
+			-moz-transform: rotate(180deg);
+			-ms-transform: rotate(180deg);
+			-o-transform: rotate(180deg);
+			transform: rotate(180deg);
+			float: right;
+			margin-top: -34px;
+		}
+		#toolbar-down table.w2ui-button.checked .w2ui-tb-image {
+			-webkit-filter: grayscale(100%) brightness(80%) sepia(100%) hue-rotate(-190deg) saturate(900%) contrast(0.8);
+			filter: grayscale(100%) brightness(80%) sepia(100%) hue-rotate(-190deg) saturate(900%) contrast(0.8);
+			background-size: 18px !important;
+		}
+		#toolbar-down table.w2ui-button.checked {
+			border: 1px solid #e5f1ff;
+			background-color: #e5f1ff;
+			border-radius: 0px;
+		}
+		</style>
+	</head>
+	<body>
+		<svg width="0" height="0" class="hide">
+		 <defs>
+		  <g id="lc_recsearch">
+				<path d="m14.5 2a7.5 7.5 0 0 0 -7.5 7.5 7.5 7.5 0 0 0 1.5410156 4.544922l-6.2480468 6.248047c-.981667.942509.4715544 2.395729 1.4140624 1.414062l6.25-6.25a7.5 7.5 0 0 0 4.5429688 1.542969 7.5 7.5 0 0 0 7.5-7.5 7.5 7.5 0 0 0 -7.5-7.5z" fill="#4d4d4d"/><circle cx="14.5" cy="9.5" fill="#fff" r="5.5"/>
+		  </g>
+		  <g id="lc_bold_branding">
+				<path d="m4 2v20h4 6a6 6 0 0 0 6-6 6 6 0 0 0 -3.082031-5.234375c.676938-.9140426 1.082031-2.0408676 1.082031-3.265625 0-3.0375661-2.462434-5.5-5.5-5.5h-4.5zm4 3h4.5c1.380712 0 2.5 1.1192881 2.5 2.5s-1.119288 2.5-2.5 2.5h-4.5zm0 8h4.5 1.5a3 3 0 0 1 3 3 3 3 0 0 1 -3 3h-6z" fill="#696969"/>
+		  </g>
+		 </defs>
+		</svg>
+
+		<div id="toolbar-down" style="display: block;" name="editbar" class="w2ui-reset w2ui-toolbar">
+			<div class="w2ui-scroll-wrapper">
+				<table width="100%" cellspacing="0" cellpadding="0">
+					<tbody>
+						<tr>
+							<td id="tb_editbar_item_showsearchbar" style="" class="" valign="middle">
+								<div>
+									<table class="w2ui-button " cellspacing="0" cellpadding="0">
+										<tbody>
+											<tr>
+												<td>
+													<table cellspacing="0" cellpadding="1">
+														<tbody>
+															<tr>
+																<td><div class="w2ui-tb-image w2ui-icon search">
+																	<!-- Draw one of the groups from our big svg containing all icons -->
+																	<svg class="icon lc_recsearch" viewBox="0 0 24 24">
+																	<title>Icon in a shape of a pencil that triggers "Edit document"</title>
+																	<use xlink:href="#lc_recsearch" />
+																	</svg>
+																	<!-- END of Draw one of the groups from our big svg containing all icons -->
+																</div></td>
+															</tr>
+														</tbody>
+													</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</td>
+							<td id="tb_editbar_item_item_1" style="" class="" valign="middle">
+								<div>
+									<table cellspacing="0" cellpadding="0">
+										<tbody>
+											<tr>
+												<td>
+													<div class="w2ui-break">&nbsp;</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</td>
+							<td id="tb_editbar_item_bold" style="" class="" valign="middle">
+								<div>
+									<table class="w2ui-button" cellspacing="0" cellpadding="0">
+										<tbody>
+											<tr>
+												<td>
+													<table cellspacing="0" cellpadding="1">
+														<tbody>
+															<tr>
+																<td>
+																	<div class="w2ui-tb-image w2ui-icon bold">
+																		<!-- Draw one of the groups from our big svg containing all icons -->
+																		<svg class="icon lc_bold_branding" viewBox="0 0 24 24">
+																		<title>Icon in a shape of a pencil that triggers "Edit document"</title>
+																		<use xlink:href="#lc_bold_branding" />
+																		</svg>
+																		<!-- END of Draw one of the groups from our big svg containing all icons -->
+																	</div>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</td>
+							<td id="tb_editbar_item_italic" style="" class="" valign="middle">
+								<div><table class="w2ui-button" cellspacing="0" cellpadding="0">
+									<tbody>
+										<tr>
+											<td>
+												<table cellspacing="0" cellpadding="1">
+													<tbody>
+														<tr>
+															<td>
+																<div class="w2ui-tb-image w2ui-icon italic"></div>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</td>
+						<td id="tb_editbar_item_underline" style="" class="" valign="middle">
+							<div>
+								<table class="w2ui-button" cellspacing="0" cellpadding="0">
+									<tbody>
+										<tr>
+											<td>
+												<table cellspacing="0" cellpadding="1">
+													<tbody>
+														<tr>
+															<td>
+																<div class="w2ui-tb-image w2ui-icon underline"></div>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</td>
+						<td id="tb_editbar_item_strikeout" style="" class="" valign="middle">
+							<div>
+								<table class="w2ui-button" cellspacing="0" cellpadding="0">
+									<tbody>
+										<tr>
+											<td>
+												<table cellspacing="0" cellpadding="1">
+													<tbody>
+														<tr>
+															<td>
+																<div class="w2ui-tb-image w2ui-icon strikeout"></div>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</td>
+						<td id="tb_editbar_item_item_6" style="" class="" valign="middle">
+							<div>
+								<table cellspacing="0" cellpadding="0">
+									<tbody>
+										<tr>
+											<td>
+												<div class="w2ui-break">&nbsp;</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</td>
+						<td id="tb_editbar_item_fontcolor" style="" class="" valign="middle">
+							<div>
+								<table class="w2ui-button" cellspacing="0" cellpadding="0">
+									<tbody>
+										<tr>
+											<td>
+												<table cellspacing="0" cellpadding="1">
+													<tbody>
+														<tr>
+															<td>
+																<div class="w2ui-tb-image w2ui-icon textcolor" style="box-shadow: rgb(255, 255, 255) 0px -2px inset, rgb(61, 133, 198) 0px -6px inset;"></div>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</td>
+						<td id="tb_editbar_item_backcolor" style="" class="" valign="middle">
+							<div>
+								<table class="w2ui-button" cellspacing="0" cellpadding="0">
+									<tbody>
+										<tr>
+											<td>
+												<table cellspacing="0" cellpadding="1">
+													<tbody>
+														<tr>
+															<td>
+																<div class="w2ui-tb-image w2ui-icon backcolor" style="box-shadow: rgb(255, 255, 255) 0px -2px inset, rgb(241, 194, 50) 0px -6px inset;"></div>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</td>
+						<td id="tb_editbar_item_leftpara" style="" class="" valign="middle">
+							<div>
+								<table class="w2ui-button checked over" cellspacing="0" cellpadding="0">
+									<tbody>
+										<tr>
+											<td>
+												<table cellspacing="0" cellpadding="1">
+													<tbody>
+														<tr>
+															<td>
+																<div class="w2ui-tb-image w2ui-icon alignleft"></div>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="w2ui-scroll-right" style="display: block;"></div>
+		</div>
+	</body>
+</html>
